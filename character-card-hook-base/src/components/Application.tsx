@@ -8,7 +8,7 @@ import { useCharacter } from './useCharacter';
 const allCharacters = fetchAllCharacters();
 
 const Application = () => {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState<CharacterType[]>([]);
   const [selection, setSelection] = useState(0);
   const [character, loadingCharacter] = useCharacter(selection);
 
@@ -17,7 +17,7 @@ const Application = () => {
   }, []);
 
   return (
-    <main className="flex h-full flex-col items-center gap-6 bg-primary-200 p-24">
+    <main className="flex flex-col items-center h-full gap-6 p-24 bg-primary-200">
       <section>
         <CharacterSelect
           characters={characters}

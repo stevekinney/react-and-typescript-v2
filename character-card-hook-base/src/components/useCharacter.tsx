@@ -1,8 +1,8 @@
 import { fetchCharacter } from '../lib/characters';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useCharacter = (id: number) => {
-  const [character, setCharacter] = useState<CharacterType | null>(null);
+  const [character, setCharacter] = useState<CharacterType>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,5 +12,5 @@ export const useCharacter = (id: number) => {
       .then(() => setLoading(false));
   }, [id]);
 
-  return useMemo(() => [character, loading], [character, loading]);
+  return [character, loading] as const;
 };
