@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+html,
+body {
+  @apply box-border;
+}
+
+html,
+body {
+  @apply m-0 h-screen w-screen p-0;
+}
+
+#root {
+  @apply h-screen w-screen;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+html,
+body {
+  @apply box-border;
+}
+
+html,
+body {
+  @apply m-0 h-screen w-screen p-0;
+}
+
+#root {
+  @apply h-screen w-screen;
+}
+
+button,
+.button {
+  @apply mr-1 mb-1 inline-block items-start border-2 border-primary-700 bg-primary-300 bg-transparent px-4 py-2 align-baseline text-base font-bold uppercase text-primary-500 outline-none transition-colors ease-in hover:bg-primary-400 focus:outline-none active:bg-primary-500;
+}
+
+input {
+  @apply border-2 border-primary-700 bg-primary-100 p-2 transition-colors ease-in focus:bg-primary-50 focus:outline-none;
+}

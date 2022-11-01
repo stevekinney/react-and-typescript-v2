@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+html,
+body {
+  @apply box-border;
+}
+
+html,
+body {
+  @apply m-0 h-screen w-screen p-0;
+}
+
+#root {
+  @apply h-screen w-screen;
+}
