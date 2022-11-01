@@ -17,9 +17,9 @@ type CharacterProps = {
 
 export const CharacterCard = ({ character }: CharacterProps): JSX.Element => {
   return (
-    <article className="w-60 border-4 border-primary-600 bg-white p-8 shadow-primary-900">
+    <article className="p-8 bg-white border-4 w-60 border-primary-600 shadow-primary-900">
       <header className="mb-8">
-        <h1 className="border-b-4 border-primary-400 text-center text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-center border-b-4 border-primary-400">
           {character.name}
         </h1>
       </header>

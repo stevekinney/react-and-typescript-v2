@@ -6,7 +6,7 @@ import { Loading } from './Loading';
 const characters = fetchRandomCharacter();
 
 const Application = () => {
-  const [character, setCharacter] = useState();
+  const [character, setCharacter] = useState<CharacterType>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Application = () => {
   }, []);
 
   return (
-    <main className="flex h-full items-center justify-around bg-primary-200 p-24">
+    <main className="flex items-center justify-around h-full p-24 bg-primary-200">
       {loading && <Loading />}
       {character && <CharacterCard character={character} />}
     </main>
