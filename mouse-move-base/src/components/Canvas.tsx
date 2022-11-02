@@ -1,4 +1,4 @@
-import { MouseEventHandler, useCallback, useReducer } from 'react';
+import React, { MouseEventHandler, useCallback, useReducer } from 'react';
 import { getPosition } from '../lib/get-position';
 
 const initialState = { x: 0, y: 0 };
@@ -8,29 +8,53 @@ type UpdatePositionAction = {
   payload: Partial<typeof initialState>;
 };
 
-const reducer = (state = { x: 0, y: 0 }, action: UpdatePositionAction) => {
+type ClearPositionAction = {
+  type: 'clearPosition';
+};
+
+const reducer = (
+  state = { x: 0, y: 0 },
+  action: UpdatePositionAction | ClearPositionAction,
+) => {
   if (action.type === 'updatePosition') {
     return { ...state, ...action.payload };
+  }
+
+  if (action.type === 'clearPosition') {
+    return { ...state, x: 0, y: 0 };
   }
 
   return state;
 };
 
-export const Canvas = () => {
-  const [{ x, y }, dispatch] = useReducer(reducer, initialState);
+type CanvasProps = { x: number; y: number; id: string };
 
-  const updatePosition = useCallback<MouseEventHandler>(
-    (event) =>
-      dispatch({ type: 'updatePosition', payload: getPosition(event) }),
-    [dispatch],
-  );
+type MousePosition = { x: number; y: number };
 
+export const withMousePosition = <T extends MousePosition>(
+  Component: React.ComponentType<T>,
+) => {
+  return (props: Omit<T, keyof MousePosition>) => {
+    const [{ x, y }, dispatch] = useReducer(reducer, initialState);
+
+    const updatePosition = useCallback<MouseEventHandler>(
+      (event) =>
+        dispatch({ type: 'updatePosition', payload: getPosition(event) }),
+      [dispatch],
+    );
+
+    return (
+      <div className="w-full h-full" onMouseMove={updatePosition}>
+        <Component {...(props as T)} x={x} y={y} foo="bar" />
+      </div>
+    );
+  };
+};
+
+export const Canvas = ({ x, y, id }: CanvasProps) => {
   return (
-    <div
-      className="relative h-full w-full bg-primary-700"
-      onMouseMove={updatePosition}
-    >
-      <section className="absolute right-0 bg-primary-200 p-4 text-right">
+    <div id={id} className="relative w-full h-full bg-primary-700">
+      <section className="absolute right-0 p-4 text-right bg-primary-200">
         <p>
           <span className="font-bold">X</span>: {x}
         </p>

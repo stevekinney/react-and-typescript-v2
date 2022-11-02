@@ -1,7 +1,7 @@
 import shuffle from 'lodash.shuffle';
 import sleep from './sleep';
 
-export const fetchRandomCharacter = async () => {
+export const fetchRandomCharacter = async (): Promise<CharacterType> => {
   const [character] = shuffle(characters);
   await sleep(1000);
   return character;
