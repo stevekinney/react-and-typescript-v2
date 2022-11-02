@@ -1,22 +1,21 @@
-import { useId } from 'react';
+import { useId, ComponentPropsWithoutRef } from 'react';
 
-type CharacterSelectProps = {
+type CharacterSelectProps = ComponentPropsWithoutRef<'select'> & {
   characters: CharacterType[];
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
 export const CharacterSelect = ({
   characters,
-  onChange,
+  ...props
 }: CharacterSelectProps) => {
   const id = useId();
 
   return (
     <section className="flex flex-col items-center">
-      <label className="mb-4 block font-bold" htmlFor={id}>
+      <label className="block mb-4 font-bold" htmlFor={id}>
         Select a character
       </label>
-      <select onChange={onChange} id={id} disabled={!characters.length}>
+      <select {...props} id={id} disabled={!characters.length}>
         {characters.length ? (
           characters.map((character, index) => (
             <option key={index} value={index}>
