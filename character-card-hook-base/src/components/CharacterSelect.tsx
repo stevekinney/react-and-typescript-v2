@@ -7,7 +7,7 @@ type CharacterSelectProps = ComponentPropsWithoutRef<'select'> & {
 export const CharacterSelect = ({
   characters,
   ...props
-}: CharacterSelectProps) => {
+}: CharacterSelectProps): JSX.Element => {
   const id = useId();
 
   return (
