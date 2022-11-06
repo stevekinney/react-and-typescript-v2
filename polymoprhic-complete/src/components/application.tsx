@@ -14,7 +14,7 @@ type PolymorphicComponentProps<
 > = React.PropsWithChildren<Props & BaseProps<C>> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
-type PolymorphicComponent = <C extends React.ElementType = 'span'>(
+type PolymorphicComponent = <C extends React.ElementType = 'button'>(
   props: PolymorphicComponentProps<C>,
 ) => React.ReactElement | null;
 
