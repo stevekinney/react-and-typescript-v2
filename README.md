@@ -1,8 +1,8 @@
-# React and TypeScript v2
+# React and TypeScript
 
 To install the dependencies in all of the sub-projects, run `npx recursive-install`.
 
-We might also dip into some of the content from the last version of this course if time permits.
+We might also dip into some of these topics if time allows:
 
 - [Higher Order Components with TypeScript](https://stevekinney.github.io/react-and-typescript/higher-order-components)
 - [Higher Order Components with TypeScript (Exercise)](https://stevekinney.github.ioa/react-and-typescript/higher-order-components-exercise)
