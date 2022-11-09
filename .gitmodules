@@ -1,0 +1,6 @@
+[submodule "name-badges"]
+	path = name-badges
+	url = https://github.com/stevekinney/name-badges.git
+[submodule "accident-counter"]
+	path = accident-counter
+	url = https://github.com/stevekinney/accident-counter.git
